@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const cors = require('cors');
 const { engine } = require('express-handlebars');
 const Handlebars = require('handlebars');
 const app = express();
@@ -9,6 +10,7 @@ const PORT = 3000;
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 // Настройка статических файлов
 app.use(express.static(path.join(__dirname, 'public')));

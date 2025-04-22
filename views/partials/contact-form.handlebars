@@ -1,0 +1,27 @@
+<div class="form-container">
+  <h2>{{formTitle}}</h2>
+  <form action="{{formAction}}" method="POST" {{#if isUpdateForm}}class="update-form"{{/if}}>
+    {{#if contact}}
+    <input type="hidden" name="id" value="{{contact.id}}">
+    {{/if}}
+    <div class="form-group">
+      <label for="name">Имя:</label>
+      <input type="text" id="name" name="name" value="{{#if contact}}{{contact.name}}{{/if}}" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Телефон:</label>
+      <input type="text" id="phone" name="phone" value="{{#if contact}}{{contact.phone}}{{/if}}" required>
+    </div>
+    <div class="button-group">
+      <button type="submit" class="{{#if isUpdateForm}}update-button{{else}}add-button{{/if}}">
+        {{#if isUpdateForm}}Изменить{{else}}Добавить{{/if}}
+      </button>
+      
+      {{#if isUpdateForm}}
+        <button type="submit" class="delete-button" formaction="/delete" formmethod="POST">Удалить</button>
+      {{/if}}
+      
+      {{> cancel-button}}
+    </div>
+  </form>
+</div> 
